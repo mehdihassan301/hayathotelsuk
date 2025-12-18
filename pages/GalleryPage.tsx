@@ -10,7 +10,7 @@ const galleryImages = [
   { src: "/images/gallery_lobby_1.jpg", category: "Lobby" },
   { src: "/images/gallery_exterior_1.jpg", category: "Exterior" },
   { src: "/images/gallery_rooms_1.jpg", category: "Rooms" },
-  { src: "/images/gallery_restaurant_1.jpg", category: "Restaurant" },
+  { src: "/images/gallery_amenities_2.jpg", category: "Restaurant" },
   { src: "/images/gallery_rooms_2.jpg", category: "Rooms" },
   { src: "/images/gallery_amenities_1.jpg", category: "Amenities" },
   { src: "/images/gallery_rooms_3.jpg", category: "Rooms" },
@@ -18,7 +18,7 @@ const galleryImages = [
   { src: "/images/gallery_lobby_2.jpg", category: "Lobby" },
 ];
 
-const categories = ["All", "Rooms", "Lobby", "Restaurant", "Amenities", "Exterior"];
+const categories = ["All", "Rooms", "Lobby", "Amenities", "Exterior"];
 
 const GalleryPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
