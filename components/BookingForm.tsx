@@ -118,10 +118,10 @@ const BookingForm: React.FC = () => {
                   onChange={handleChange}
                 >
                   <option value="standard">Standard Room</option>
-                  <option value="deluxe">Deluxe King Room</option>
+                  <option value="deluxe">Deluxe Room</option>
                   <option value="twin">Executive Twin Room</option>
-                  <option value="family">Family Suite</option>
-                  <option value="suite">Hayatt Royal Suite</option>
+                  <option value="family">Semi Deluxe Room</option>
+                  <option value="suite">Triple Bed Room</option>
                 </select>
               </div>
               <div className="space-y-2">
