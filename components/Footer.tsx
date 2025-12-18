@@ -47,14 +47,11 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 font-serif">Follow Us</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors text-white">
+              <a href="https://www.facebook.com/p/Hotel-Hayatt-Sukkur-100088487592732/" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors text-white">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors text-white">
+              <a href="https://www.instagram.com/hotel.hayatt/" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors text-white">
                 <Instagram size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 transition-colors text-white">
-                <Twitter size={18} />
               </a>
             </div>
           </div>
