@@ -1,8 +1,10 @@
+
 import React from 'react';
 import Section from '../components/Section';
 import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
 import { Check } from 'lucide-react';
+// Fixed: Explicitly import Link from react-router-dom
 import { Link } from 'react-router-dom';
 import { Room } from '../types';
 
