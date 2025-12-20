@@ -9,6 +9,7 @@ import {
   ShieldCheck, Wind, Key, Smartphone, Sparkles, 
   CheckCircle, Shield, Droplets, Thermometer, Box
 } from 'lucide-react';
+// Fixed: Ensure standard import for Link from react-router-dom
 import { Link } from 'react-router-dom';
 
 const amenityGroups = [
