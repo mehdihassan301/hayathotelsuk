@@ -1,4 +1,4 @@
-vimport React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Section from '../components/Section';
 import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
