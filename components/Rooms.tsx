@@ -1,7 +1,9 @@
+
 import React from 'react';
 import Section from './Section';
 import { Room } from '../types';
 import { Check } from 'lucide-react';
+// Fixed: Explicitly import Link from react-router-dom
 import { Link } from 'react-router-dom';
 
 const rooms: Room[] = [
@@ -38,7 +40,7 @@ const rooms: Room[] = [
   {
     id: 'twin',
     name: 'Twin Sharing Room',
-    description: 'Featuring two plush twin beds and a dedicated workspace.',
+    description: 'Perfect for colleagues or friends, featuring two plush twin beds and a dedicated workspace.',
     price: 11000,
     amenities: [
       'Free Wi-Fi', 
