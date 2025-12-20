@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Section from './Section';
 
 const BookingForm: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const initialState = {
     name: '',
     email: '',
     phone: '',
@@ -11,7 +11,9 @@ const BookingForm: React.FC = () => {
     roomType: 'deluxe',
     guests: '1',
     specialRequests: ''
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,11 +36,31 @@ const BookingForm: React.FC = () => {
   const handleWhatsAppClick = (e: React.FormEvent) => {
     e.preventDefault();
     window.open(constructWhatsAppMessage(), '_blank');
+    setFormData(initialState); // Clear form after action
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your reservation request! We will contact you shortly to confirm.');
+    
+    const subject = `New Reservation Request: ${formData.name}`;
+    const body = `Reservation Details for Hotel Hayatt Sukkur:
+------------------------------------------
+Guest Name: ${formData.name || 'N/A'}
+Phone: ${formData.phone || 'N/A'}
+Email: ${formData.email || 'N/A'}
+Room Category: ${formData.roomType}
+Check-In Date: ${formData.checkIn || 'N/A'}
+Check-Out Date: ${formData.checkOut || 'N/A'}
+Number of Guests: ${formData.guests}
+Special Requests: ${formData.specialRequests || 'None'}
+------------------------------------------
+Please reply to this email to confirm availability.`;
+
+    window.location.href = `mailto:hayattsuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Clear form for next use
+    setFormData(initialState);
+    alert('Your email client has been opened to send the reservation details. Form cleared.');
   };
 
   return (
@@ -136,11 +158,11 @@ const BookingForm: React.FC = () => {
                   value={formData.roomType}
                   onChange={handleChange}
                 >
-                  <option value="standard">Standard Room</option>
-                  <option value="deluxe">Deluxe King Room</option>
-                  <option value="twin">Executive Twin Room</option>
-                  <option value="family">Family Suite</option>
-                  <option value="suite">Hayatt Royal Suite</option>
+                  <option value="Standard Room">Standard Room</option>
+                  <option value="Deluxe King Room">Deluxe King Room</option>
+                  <option value="Executive Twin Room">Executive Twin Room</option>
+                  <option value="Semi Deluxe Room">Semi Deluxe Room</option>
+                  <option value="Triple Bed Room">Triple Bed Room</option>
                 </select>
               </div>
               <div className="space-y-2">
