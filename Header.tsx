@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+// Fixed: Ensure standard import for Link and useLocation from react-router-dom
 import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
@@ -94,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             }`}
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            {isDark ? <Sun size={18} /> : < Moon size={18} />}
           </button>
 
           <Link
