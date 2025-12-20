@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+vimport React, { useState, useEffect } from 'react';
 import Section from '../components/Section';
 import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
@@ -9,28 +8,23 @@ import { useLocation } from 'react-router-dom';
 
 const ContactPage: React.FC = () => {
   const location = useLocation();
-  const [formData, setFormData] = useState({
+  
+  const initialState = {
     name: '',
     email: '',
     phone: '',
     checkIn: '',
     checkOut: '',
-    roomType: 'deluxe',
+    roomType: 'Deluxe King Room',
     message: ''
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
     // If navigated from Rooms page with a selection
     if (location.state && (location.state as any).selectedRoom) {
-       // Simple match to value
-       const roomName = (location.state as any).selectedRoom.toLowerCase();
-       let type = 'deluxe';
-       if (roomName.includes('standard')) type = 'standard';
-       if (roomName.includes('twin')) type = 'twin';
-       if (roomName.includes('suite') && !roomName.includes('family')) type = 'suite';
-       if (roomName.includes('family')) type = 'family';
-       
-       setFormData(prev => ({ ...prev, roomType: type }));
+       setFormData(prev => ({ ...prev, roomType: (location.state as any).selectedRoom }));
     }
   }, [location]);
 
@@ -54,11 +48,30 @@ const ContactPage: React.FC = () => {
   const handleWhatsAppClick = (e: React.FormEvent) => {
     e.preventDefault();
     window.open(constructWhatsAppMessage(), '_blank');
+    setFormData(initialState); // Clear form after action
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your message/reservation request! We will contact you shortly.');
+    
+    const subject = `Inquiry/Reservation from ${formData.name}`;
+    const body = `Inquiry Details for Hotel Hayatt Sukkur:
+------------------------------------------
+Guest Name: ${formData.name || 'N/A'}
+Phone: ${formData.phone || 'N/A'}
+Email: ${formData.email || 'N/A'}
+Interested Room: ${formData.roomType}
+Check-In Date: ${formData.checkIn || 'N/A'}
+Check-Out Date: ${formData.checkOut || 'N/A'}
+Message/Requests: ${formData.message || 'None'}
+------------------------------------------
+Submitted via Website Contact Form.`;
+
+    window.location.href = `mailto:hayattsuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Clear form for next use
+    setFormData(initialState);
+    alert('Your reservation inquiry has been prepared for email. Form cleared.');
   };
 
   return (
@@ -107,11 +120,11 @@ const ContactPage: React.FC = () => {
                 <div className="space-y-2">
                    <label className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Interested Room</label>
                    <select name="roomType" value={formData.roomType} onChange={handleChange} className="w-full p-3 bg-gray-50 dark:bg-dark-800 border border-gray-200 dark:border-dark-700 rounded-sm focus:border-brand-500 outline-none transition-colors text-gray-600 dark:text-gray-300">
-                      <option value="standard">Standard Room</option>
-                      <option value="deluxe">Deluxe King Room</option>
-                      <option value="twin">Executive Twin Room</option>
-                      <option value="family">Family Suite</option>
-                      <option value="suite">Hayatt Royal Suite</option>
+                      <option value="Standard Room">Standard Room</option>
+                      <option value="Deluxe King Room">Deluxe King Room</option>
+                      <option value="Executive Twin Room">Executive Twin Room</option>
+                      <option value="Semi Deluxe Room">Semi Deluxe Room</option>
+                      <option value="Triple Bed Room">Triple Bed Room</option>
                    </select>
                 </div>
                 <div className="space-y-2">
